@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.seba_.mebav5.Agregar_anecdota"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/TituloPI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="Agregar Punto De Interés"
+        android:textSize="30dp" />
+
+    <EditText
+        android:id="@+id/Titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TituloPI"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Nombre del lugar"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/descripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Titulo"
+        android:layout_below="@+id/Titulo"
+        android:layout_gravity="center"
+        android:layout_marginTop="51dp"
+        android:ems="10"
+        android:hint="Descripción"
+        android:inputType="textMultiLine" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Addfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/descripcion"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="end"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="14dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Agregar Archivo"
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+        <ImageView
+            android:id="@+id/previewPI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/Addfile"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@+id/descripcion"
+            app:srcCompat="?android:attr/actionModePasteDrawable" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/agrepi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="13dp"
+        android:backgroundTint="@android:drawable/list_selector_background"
+        app:srcCompat="@drawable/agregarpibuton_xhdpi" />
+
+</LinearLayout>
+</ScrollView>

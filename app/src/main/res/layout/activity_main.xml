@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.seba_.mebav5.MainActivity">
+
+    <include android:layout_height="515dp"
+              android:layout_width="387dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        layout="@layout/activity_maps"/>
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/MENU"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        app:fab_addButtonColorNormal="@color/colorAccent"
+        app:fab_labelStyle="@style/Menu_fondo"
+
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Perfil"
+            app:fab_icon="@drawable/ic_person_black_24dp"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_title="Perfil"
+            app:fab_size="mini"
+
+            />
+
+        <!--com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Lugares"
+            app:fab_icon="@drawable/ic_location_on_black_24dp"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_title="Tus Lugares"
+            app:fab_size="mini"
+            /-->
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+</RelativeLayout>

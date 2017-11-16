@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.seba_.mebav5.Agregar_anecdota">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/TituloAnecAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/agregar_anec"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/TituloAnecEditxt"
+            android:layout_width="273dp"
+            android:layout_height="57dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="@string/tituloadd"
+            android:inputType="textPersonName"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TituloAnecAdd"
+            tools:layout_editor_absoluteX="61dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Elige una categoría para tu relato"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/Categoriaspin"
+            android:layout_width="282dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="20dp"
+            android:entries="@array/Categoria"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TituloAnecEditxt" />
+
+        <EditText
+            android:id="@+id/DescripcionAnecEditxt"
+            android:layout_width="323dp"
+            android:layout_height="152dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="@string/descripcionadd"
+            android:inputType="textMultiLine"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Categoriaspin" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/CargarFotoAnecbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/descripcion"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="end"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="14dp"
+                android:backgroundTint="@color/colorAccent"
+                android:text="Agregar Foto"
+                android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+            <ImageView
+                android:id="@+id/previewAnec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/Addfile"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/descripcion"
+                app:srcCompat="?android:attr/actionModePasteDrawable" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/addAnecbtnimg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CargarFotoAnecbtn"
+            app:srcCompat="@drawable/agregarpibuton_xhdpi" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "862231622959",
+    "firebase_url": "https://mebav55.firebaseio.com",
+    "project_id": "mebav55",
+    "storage_bucket": "mebav55.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:862231622959:android:8d6be5ffeab96ed2",
+        "android_client_info": {
+          "package_name": "com.example.seba_.mebav5"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "862231622959-rhfl3s1v519n0bb431psp7g0a0r1iss3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.seba_.mebav5",
+            "certificate_hash": "bd3a21162e25041c4e5ad57a8877fea4355915d6"
+          }
+        },
+        {
+          "client_id": "862231622959-325j1nc9cq54kpe69l5ggtjnebim4qgc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCahrR6b1uJr8Svxe0odGlihCmqDbX_Gc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "862231622959-325j1nc9cq54kpe69l5ggtjnebim4qgc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

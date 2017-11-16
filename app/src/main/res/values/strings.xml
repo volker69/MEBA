@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">MEBA</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <string name="titulo">Título no disponible</string>
+    <string name="tituloadd">Título</string>
+    <string name="descripcion">Descripción no disponible</string>
+    <string name="nombre">Nombre no disponible</string>
+    <string name="descripcionadd">Descripción</string>
+    <string name="agregar_anec">Agregar anécdota</string>
+    <string name="agregar_an_cdota">agregar anécdota</string>
+    <string name="cargar_foto">Cargar foto</string>
+    <string name="mirar_anec">Mira y comenta las experiencias de otras personas sobre este lugar</string>
+    <array name="Categoria">
+        <item>Social</item>
+        <item>Medio ambiente</item>
+        <item>Arte y Literatura</item>
+        <item>Ciencia y Tecnología</item>
+        <item>Educación</item>
+        <item>Deportes</item>
+    </array>
+
+    <string name="title_activity_fullscreen">MEBA</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>
