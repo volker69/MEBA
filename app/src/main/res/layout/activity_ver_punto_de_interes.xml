@@ -46,6 +46,20 @@
             app:layout_constraintTop_toBottomOf="@+id/tituloPItxt"
             app:srcCompat="@drawable/paisaje" />
 
+        <RatingBar
+            android:id="@+id/ratingid"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/ratingtxt"
+            android:layout_width="277dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Popularidad: "
+            android:textSize="18sp" />
+
         <TextView
             android:id="@+id/descripcionPItxt"
             android:layout_width="339dp"

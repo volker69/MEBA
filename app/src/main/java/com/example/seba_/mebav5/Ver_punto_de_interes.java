@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +28,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 public class Ver_punto_de_interes extends AppCompatActivity {
@@ -36,6 +39,7 @@ public class Ver_punto_de_interes extends AppCompatActivity {
     TextView title,descrip;
     Button AddAnecdota;
     DatabaseReference dataAnec;
+    DatabaseReference DataPI;
     DatabaseReference dataIDpi;
     ListView listViewAnec;
     List<Anecdota> anecList;
@@ -47,7 +51,9 @@ public class Ver_punto_de_interes extends AppCompatActivity {
     public static final String ANEC_DESCRIP = "descripcionanec";
     public static final String CORREO_ELECTRONICO_PI="mail";
     public static final String ANEC_FKUSER_MAIL="fkuser";
-
+    private RatingBar ratingBar;
+    private  TextView ratingtct;
+    public static float ratingFloat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +65,8 @@ public class Ver_punto_de_interes extends AppCompatActivity {
         final String ID = getIntent().getStringExtra("IDPI");
         dataAnec = FirebaseDatabase.getInstance().getReference("anecdota").child(ID);
         imageView = (ImageView)findViewById(R.id.fotoPIjpj);
+        ratingBar = (RatingBar)findViewById(R.id.ratingid);
+        ratingtct = (TextView)findViewById(R.id.ratingtxt);
         FirebaseDatabase data =FirebaseDatabase.getInstance();
         dataIDpi = data.getReference("punto_de_interes");
         dataIDpi.child(ID).addValueEventListener(new ValueEventListener() {
@@ -67,12 +75,27 @@ public class Ver_punto_de_interes extends AppCompatActivity {
                 Punto_de_interes pi = dataSnapshot.getValue(Punto_de_interes.class);
                 Log.e("URLfotu",pi.getFotopi().toString());
                 String URLfoto = pi.getFotopi();
+                ratingFloat = pi.getRating();
                 Glide.with(Ver_punto_de_interes.this).load(URLfoto).fitCenter()
                         .centerCrop().into(imageView);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+       //aqui trabajamos con el RAtingbar hay que trabajar en ello
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                DataPI= FirebaseDatabase.getInstance().getReference("punto_de_interes");
+                float total = (ratingFloat+v)/2;
+                Update(ID,v);
+
+            ratingtct.setText("Popularidad: "+ total);
 
             }
         });
@@ -145,6 +168,16 @@ public class Ver_punto_de_interes extends AppCompatActivity {
 
     }
 
+
+    public void Update(String IDpunInt, float rating){
+
+        String KeyID = dataIDpi.child("punto_de_interes").push().getKey();
+        Punto_de_interes de_interes = new Punto_de_interes(IDpunInt,rating);
+        Map<String, Object> piValue =de_interes.toMap();
+
+        Map<String,Object> chieldUpdate = new HashMap<>();
+        chieldUpdate.put("/punto_de_interes"+KeyID,piValue);
+    }
 
     public void Delate (String ID) {
         final DatabaseReference dataanes = FirebaseDatabase.getInstance().getReference("anecdota").child(ID);

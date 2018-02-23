@@ -119,6 +119,7 @@ public class Agregar_PI extends AppCompatActivity {
         String titulo = tituloPiEdiText.getText().toString().trim();
         String descripcion = descripcionPiEdiTxt.getText().toString().trim();
         String foto;
+        float rating=0;
 
         if(urlss==null||urlss==""){
             foto="https://firebasestorage.googleapis.com/v0/b/mebav55.appspot.com/o/Foto%2Fpaisaje.png?alt=media&token=c334a9f0-26db-49fa-b893-68591baafc62";
@@ -127,7 +128,7 @@ public class Agregar_PI extends AppCompatActivity {
         if (!TextUtils.isEmpty(titulo)&&!TextUtils.isEmpty(descripcion))
         {
           String id = DataPI.push().getKey();
-            Punto_de_interes pi = new Punto_de_interes(id,lat,lng,titulo,descripcion,foto);
+            Punto_de_interes pi = new Punto_de_interes(id,lat,lng,titulo,descripcion,foto,rating);
             DataPI.child(id).setValue(pi);
         }else {
             Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show();

@@ -9,7 +9,7 @@ public class Anecdota {
     private String Tituloanec;
     private String Descripcionanec;
     private String Fotoanec;
-    private Double Ratinganec;
+    private int Like;
     private String Categoriaanec;
     private String fkUser;
 
@@ -17,12 +17,12 @@ public class Anecdota {
 
     }
 
-    public Anecdota(String IDanec, String tituloanec, String descripcionanec, String fotoanec, Double ratinganec, String categoriaanec,String fkUser){
+    public Anecdota(String IDanec, String tituloanec, String descripcionanec, String fotoanec, int like, String categoriaanec,String fkUser){
         this.IDanec = IDanec;
         this.Tituloanec = tituloanec;
         this.Descripcionanec = descripcionanec;
         this.Fotoanec = fotoanec;
-        this.Ratinganec = ratinganec;
+        this.Like = like;
         this.Categoriaanec = categoriaanec;
         this.fkUser=fkUser;
     }
@@ -59,12 +59,12 @@ public class Anecdota {
         this.Fotoanec = fotoanec;
     }
 
-    public Double getRatinganec() {
-        return Ratinganec;
+    public int getLike() {
+        return Like;
     }
 
-    public void setRatinganec(Double ratinganec) {
-        this.Ratinganec = ratinganec;
+    public void setLike(int like) {
+        this.Like= like;
     }
 
     public String getCategoriaanec() {

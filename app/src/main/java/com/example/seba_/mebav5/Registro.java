@@ -5,10 +5,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +32,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.regex.Pattern;
+
 public class Registro extends AppCompatActivity implements View.OnClickListener {
 
     EditText nombre,pass,confpass,correo,fecha;
@@ -40,6 +45,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     DatabaseReference referenceUser;
     FirebaseAuth.AuthStateListener authStateListener;
     private ProgressDialog dialog;
+    TextInputLayout impName,impMail,inmPass,impCoPass,impDAte;
+    Boolean bname,bmail,bpass,bCopass,bdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +64,12 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         Subirfoto = (Button) findViewById(R.id.RegisAddfile);
         imageView  = (ImageView) findViewById(R.id.previewPerfil);
         dialog = new ProgressDialog(this);
+
+        impName = (TextInputLayout)findViewById(R.id.impregisnametxt);
+        impMail = (TextInputLayout)findViewById(R.id.impregismailLogedittxt);
+        inmPass =(TextInputLayout)findViewById(R.id.impregispassLogedittxt);
+        impCoPass=(TextInputLayout)findViewById(R.id.impconfirpassLogedittxt);
+        impDAte=(TextInputLayout)findViewById(R.id.impfechaText);
 
         Registrar.setOnClickListener(this);
         Cancel.setOnClickListener(this);
@@ -162,18 +175,58 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                 String confcontra = confpass.getText().toString().trim();
                 String Email = correo.getText().toString().trim();
                 String cumple = fecha.getText().toString().trim();
-                if (!TextUtils.isEmpty(name)&&!TextUtils.isEmpty(contra)&&!TextUtils.isEmpty(confcontra)&&!TextUtils.isEmpty(Email)&&!TextUtils.isEmpty(cumple)){
-                   if(contra.equals(confcontra)){
-                       RegistrarFirebase(Email,contra);
-                      // agregarUsuer();
-                      // Intent intent = new Intent(Registro.this,Login.class);
-                       //startActivity(intent);
-                   }else{
-                       Toast.makeText(this, "Verifique su contraseña ", Toast.LENGTH_SHORT).show();
-                   }
+
+                Pattern pattern = Pattern.compile("^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+$");
+                if(pattern.matcher(nombre.getText().toString()).matches()==false){
+                    impName.setError("Nombre invalido");
+                    bname=false;
+
                 }else {
-                    Toast.makeText(this, "Llene todos los campos ", Toast.LENGTH_SHORT).show();
+                    impName.setError(null);
+                    bname=true;
                 }
+                Pattern p3 =Pattern.compile("^[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]");
+                if (p3.matcher(pass.getText().toString()).matches()==false){
+                    inmPass.setError("Debe tener como minimo 6 caracteres");
+                    bpass=false;
+                }else {
+                    inmPass.setError(null);
+                    bpass=true;
+                }
+                Pattern p4 =Pattern.compile("^[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]");
+                if (p4.matcher(confpass.getText().toString()).matches()==false){
+                    impCoPass.setError("Debe tener como minimo 6 caracteres");
+                    bCopass=false;
+                }else {
+                    impCoPass.setError(null);
+                    bCopass=true;
+                }
+                if (Patterns.EMAIL_ADDRESS.matcher(correo.getText().toString()).matches()==false){
+                    impMail.setError("Mail invalido");
+                    bmail=false;
+                }else {
+                    impMail.setError(null);
+                    bmail=true;
+                }
+
+                if(bname==true&&bmail==true&&bpass==true&&bCopass==true){
+                    if (!TextUtils.isEmpty(name)&&!TextUtils.isEmpty(contra)&&!TextUtils.isEmpty(confcontra)&&!TextUtils.isEmpty(Email)&&!TextUtils.isEmpty(cumple)){
+                        if(contra.equals(confcontra)){
+                            RegistrarFirebase(Email,contra);
+                            // agregarUsuer();
+                            // Intent intent = new Intent(Registro.this,Login.class);
+                            //startActivity(intent);
+                        }else{
+                            Toast.makeText(this, "Verifique su contraseña ", Toast.LENGTH_SHORT).show();
+                        }
+                    }else {
+                        Toast.makeText(this, "Llene todos los campos ", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(this, "Verifique todos los campos", Toast.LENGTH_SHORT).show();
+                }
+
+
             break;
             case R.id.regisCancelarbtn:
                 Intent intent = new Intent(Registro.this,Login.class);

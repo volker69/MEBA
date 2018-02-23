@@ -128,11 +128,11 @@ public class Agregar_anecdota extends AppCompatActivity {
             foto="https://firebasestorage.googleapis.com/v0/b/mebav55.appspot.com/o/Foto%2Fpaisaje.png?alt=media&token=c334a9f0-26db-49fa-b893-68591baafc62";
         }else
         {foto = urlss;}
-        Double rating = 1.0;
+        int like = 0;
         if (!TextUtils.isEmpty(title)&&!TextUtils.isEmpty(descrip))
         {
             String idAne = DataAnec.push().getKey();
-            Anecdota anecdota = new Anecdota(idAne,title,descrip,foto,rating,cagorie,fkuser);
+            Anecdota anecdota = new Anecdota(idAne,title,descrip,foto,like,cagorie,fkuser);
             DataAnec.child(idAne).setValue(anecdota);
         }else {
             Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show();

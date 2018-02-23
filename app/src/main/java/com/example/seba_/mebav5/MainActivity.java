@@ -175,8 +175,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
          public void onDataChange(DataSnapshot dataSnapshot) {
              for (DataSnapshot piSnap : dataSnapshot.getChildren())
              {
-                 Punto_de_interes pi = piSnap.getValue(Punto_de_interes.class);
-                 double latitud = pi.getLat();
+                 Punto_de_interes pi = piSnap.getValue(Punto_de_interes.class);double latitud = pi.getLat();
                  double longitud = pi.getLng();
                  String Titulo = pi.getTitulopi();
                  String Descripcion = pi.getDescripcionpi();
