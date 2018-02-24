@@ -3,6 +3,7 @@ package com.example.seba_.mebav5;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,11 +25,15 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.regex.Pattern;
+
 public class Agregar_PI extends AppCompatActivity {
     Button cargarFotoM;
     ImageButton addPIbtn;
     EditText tituloPiEdiText;
     EditText descripcionPiEdiTxt;
+    TextInputLayout impname,impdescrip;
+    Boolean bName,bDescrip;
     double lat,lng,val;
     DatabaseReference DataPI;
     //CARGAR FOTO
@@ -73,12 +78,38 @@ public class Agregar_PI extends AppCompatActivity {
         addPIbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addPI();
-                Intent intent = new Intent(Agregar_PI.this,MainActivity.class);
-                startActivity(intent);
-                Toast.makeText(Agregar_PI.this, "punto de interés agregado", Toast.LENGTH_SHORT).show();
-                tituloPiEdiText.setText("");
-                descripcionPiEdiTxt.setText("");
+
+                Pattern p  = Pattern.compile("^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s0-9][a-zA-ZñÑáéíóúÁÉÍÓÚ\\s0-9]");
+                if (p.matcher(tituloPiEdiText.getText().toString()).matches()==false)
+                {
+                    impname.setError("tiene que tener como minimo 2 caracteres");
+                    bName=false;
+                }else {
+                    impname.setError(null);
+                    bName=true;
+                }
+
+
+                if (descripcionPiEdiTxt.length()>150){
+                    impdescrip.setError("solo se permite 150 caracteres");
+                    bDescrip=false;
+                }else {
+                    impdescrip.setError(null);
+                    bDescrip=true;
+                }
+
+                if (bDescrip==true&&bName==true){
+                    addPI();
+                    Intent intent = new Intent(Agregar_PI.this,MainActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(Agregar_PI.this, "punto de interés agregado", Toast.LENGTH_SHORT).show();
+                    tituloPiEdiText.setText("");
+                    descripcionPiEdiTxt.setText("");
+                }else {
+                    Toast.makeText(Agregar_PI.this, "Error", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 

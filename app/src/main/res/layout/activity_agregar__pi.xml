@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -27,19 +27,32 @@
         android:layout_marginTop="15dp"
         android:text="Agregar Punto De Interés"
         android:textSize="30dp" />
-
-    <EditText
-        android:id="@+id/Titulo"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inpTituloPI"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/TituloPI"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="Nombre del lugar"
-        android:inputType="textPersonName" />
+        android:layout_marginTop="@dimen/Matginto"
+        >
+        <EditText
+            android:id="@+id/Titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TituloPI"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="Nombre del lugar"
+            android:inputType="textPersonName" />
+    </android.support.design.widget.TextInputLayout>
 
+
+<android.support.design.widget.TextInputLayout
+    android:id="@+id/inpdescripcion"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/Matginto"
+    >
     <EditText
         android:id="@+id/descripcion"
         android:layout_width="wrap_content"
@@ -51,6 +64,8 @@
         android:ems="10"
         android:hint="Descripción"
         android:inputType="textMultiLine" />
+</android.support.design.widget.TextInputLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,4 +108,4 @@
         app:srcCompat="@drawable/agregarpibuton_xhdpi" />
 
 </LinearLayout>
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>

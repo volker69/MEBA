@@ -3,6 +3,7 @@ package com.example.seba_.mebav5;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,6 +25,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.regex.Pattern;
+
 public class Agregar_anecdota extends AppCompatActivity {
 
     EditText Title;
@@ -32,6 +35,8 @@ public class Agregar_anecdota extends AppCompatActivity {
     Spinner Categorice;
     DatabaseReference DataAnec;
     ImageButton Agregaranecdota;
+    TextInputLayout impTitle,impDescrip;
+    Boolean bTitle,bDescrip;
     //CARGAR FOTO
     StorageReference storageReference;
     private static final int GALLERY_INTENT = 1;
@@ -58,6 +63,9 @@ public class Agregar_anecdota extends AppCompatActivity {
         Agregaranecdota = (ImageButton)findViewById(R.id.addAnecbtnimg);
         Categorice = (Spinner)findViewById(R.id.Categoriaspin);
         Agregarphoto = (Button)findViewById(R.id.CargarFotoAnecbtn);
+
+        impTitle =(TextInputLayout)findViewById(R.id.impTituloAnecEditxt);
+        impDescrip=(TextInputLayout)findViewById(R.id.impDescripcionAnecEditxt);
         //CARGAR FOTO
         imageView= (ImageView)findViewById(R.id.previewAnec);
         Agregarphoto.setOnClickListener(new View.OnClickListener() {
@@ -73,10 +81,35 @@ public class Agregar_anecdota extends AppCompatActivity {
         Agregaranecdota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addAnec();
-                Intent intent = new Intent(Agregar_anecdota.this,MainActivity.class);
-                Toast.makeText(Agregar_anecdota.this, "anédota agregada", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+
+                Pattern p  = Pattern.compile("^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s0-9][a-zA-ZñÑáéíóúÁÉÍÓÚ\\s0-9]");
+                if (p.matcher(Title.getText().toString()).matches()==false)
+                {
+                    impTitle.setError("debe tener como mnimo 2 caracteres");
+                    bTitle=false;
+                }else{
+                    impTitle.setError(null);
+                    bTitle=true;
+                }
+
+                if (Descrip.length()>150){
+                    impDescrip.setError("Alcanzaste el limite de caracteres");
+                    bDescrip=false;
+                }else {
+                    impDescrip.setError(null);
+                    bDescrip=true;
+                }
+                if (bTitle==true&&bDescrip==true)
+                {
+                    addAnec();
+                    Intent intent = new Intent(Agregar_anecdota.this,MainActivity.class);
+                    Toast.makeText(Agregar_anecdota.this, "anédota agregada", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(Agregar_anecdota.this, "ERROR", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 
