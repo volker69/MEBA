@@ -82,8 +82,8 @@ public class Agregar_anecdota extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Pattern p  = Pattern.compile("^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s0-9][a-zA-ZñÑáéíóúÁÉÍÓÚ\\s0-9]");
-                if (p.matcher(Title.getText().toString()).matches()==false)
+                Pattern p  = Pattern.compile("^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s0-9]+$");
+                if (p.matcher(Title.getText().toString()).matches()==false&&Title.length()<2&&Title.length()>30)
                 {
                     impTitle.setError("debe tener como mnimo 2 caracteres");
                     bTitle=false;

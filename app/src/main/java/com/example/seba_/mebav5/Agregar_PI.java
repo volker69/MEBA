@@ -79,8 +79,8 @@ public class Agregar_PI extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Pattern p  = Pattern.compile("^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s0-9][a-zA-ZñÑáéíóúÁÉÍÓÚ\\s0-9]");
-                if (p.matcher(tituloPiEdiText.getText().toString()).matches()==false)
+                Pattern p  = Pattern.compile("^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s0-9]+$");
+                if (p.matcher(tituloPiEdiText.getText().toString()).matches()==false&&tituloPiEdiText.length()<2&&tituloPiEdiText.length()>30)
                 {
                     impname.setError("tiene que tener como minimo 2 caracteres");
                     bName=false;

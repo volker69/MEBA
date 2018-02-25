@@ -1,7 +1,10 @@
 package com.example.seba_.mebav5;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.seba_.mebav5.Objetos.AdapterComentario;
@@ -58,17 +62,30 @@ public class Ver_anecdota extends AppCompatActivity {
     public static String nombreComenta;
     //public static String urlPErfil;
 
+    android.support.v7.widget.Toolbar toolbar;
+    CollapsingToolbarLayout toolbarLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_anecdota);
         //--------
-        try {
+       toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_anec);
+       toolbarLayout=(CollapsingToolbarLayout)findViewById(R.id.collapsing_anec);
+
+       setSupportActionBar(toolbar);
+       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Context context = this;
+        toolbarLayout.setContentScrimColor(ContextCompat.getColor(context,R.color.colorPrimary));
+        toolbarLayout.setCollapsedTitleTextColor(ContextCompat.getColor(context,R.color.white));
+        toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(context,R.color.white));
+        //----
             perilReference = FirebaseDatabase.getInstance().getReference("usuario");
 
 
             perfilFoto = (CircleImageView)findViewById(R.id.userPerfilAnec);
-            titulo = (TextView) findViewById(R.id.tituloAnecdota);
+           // titulo = (TextView) findViewById(R.id.tituloAnecdota);
             descripcionn = (TextView) findViewById(R.id.descripcionAnecDotatxt);
             categoria = (TextView) findViewById(R.id.CategoriaAnectxt);
             comentar = (Button) findViewById(R.id.comentarbtn);
@@ -140,7 +157,8 @@ public class Ver_anecdota extends AppCompatActivity {
             databaseReference = database.getReference("comentarios").child(ID);//Sala de chat (nombre)
             storage = FirebaseStorage.getInstance();
             //---
-            titulo.setText(title);
+            toolbarLayout.setTitle(title);
+            //titulo.setText(title);
             descripcionn.setText(description);
             categoria.setText(categorie);
             Glide.with(Ver_anecdota.this).load(foto).fitCenter()
@@ -206,7 +224,7 @@ public class Ver_anecdota extends AppCompatActivity {
 
             }
         });
-        }catch (Exception e ){}
+
     }
 
     private void setScrollbar()

@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#FFD7741C</color>
     <color name="colorAccent">#f5a44d</color>
 
+    <color name="white">#fff</color>
+
     <color name="black_overlay">#66000000</color>
     <color name="facebook">#297fb8</color>
     <color name="google">#e93434</color>

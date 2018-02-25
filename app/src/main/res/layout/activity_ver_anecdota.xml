@@ -1,170 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.seba_.mebav5.Ver_anecdota">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    tools:context="com.example.seba_.mebav5.Ver_anecdota"
+    android:fitsSystemWindows="true"
     >
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:id="@+id/appBar_anec"
+        android:fitsSystemWindows="true"
         >
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/userPerfilAnec"
-            android:src="@drawable/perfil"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
-            android:hint="Comentar..."
-            android:textSize="18sp"
-            app:layout_constraintHorizontal_bias="0.668"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <TextView
-            android:id="@+id/NombreUserAnectxt"
-            android:layout_width="368dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/nombre"
-            android:textAlignment="inherit"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.711" />
-    </LinearLayout>
-
-    <TextView
-    android:id="@+id/tituloAnecdota"
-    android:layout_width="368dp"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="16dp"
-    android:text="@string/titulo"
-    android:textAlignment="center"
-    android:textSize="30sp"
-    android:textStyle="bold"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintHorizontal_bias="0.711" />
-
-    <ImageView
-        android:id="@+id/fotoAnecdojpj"
-        android:layout_width="229dp"
-        android:layout_height="237dp"
-        android:layout_gravity="center"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="14dp"
-        android:contentDescription=""
-        app:layout_constraintHorizontal_bias="0.633"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tituloPItxt"
-        app:srcCompat="@drawable/paisaje" />
-    <TextView
-        android:id="@+id/CategoriaAnectxt"
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/collapsing_anec"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/colorAccent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            >
+             <ImageView
+                 android:id="@+id/fotoAnecdojpj"
+                 android:background="@drawable/paisaje"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:fitsSystemWindows="true"
+                 android:scaleType="center"
+                 />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_anec"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="parallax"
+                />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:text="Categoria"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/descripcionAnecDotatxt"
-        android:layout_width="339dp"
-        android:layout_height="215dp"
-        android:layout_gravity="center"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="14dp"
-        android:text="@string/descripcion"
-        android:textSize="18sp"
-        app:layout_constraintHorizontal_bias="0.668"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fotoPIjpj" />
-
-    <TextView
-        android:id="@+id/Comentario"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:text="Mira las opiniones de la gente de esta anécdota "
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycleComentario"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_gravity="fill_vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
 
-        <EditText
-            android:id="@+id/Comentarios"
-            android:layout_width="251dp"
-            android:layout_height="96dp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="14dp"
-            android:hint="Comentar..."
-            android:textSize="18sp"
-            app:layout_constraintHorizontal_bias="0.668"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userPerfilAnec"
+                    android:src="@drawable/perfil"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:hint="Comentar..."
+                    android:textSize="18sp"
+                    app:layout_constraintHorizontal_bias="0.668"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
 
-        <Button
-            android:id="@+id/comentarbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:textSize="10dp"
-            android:background="@color/colorAccent"
-            android:text="comentar"
-            android:textColor="@color/cardview_light_background"
-            android:textStyle="bold" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/NombreUserAnectxt"
+                    android:layout_width="368dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/nombre"
+                    android:textAlignment="inherit"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintHorizontal_bias="0.711" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/CategoriaAnectxt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:text="Categoria"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/descripcionAnecDotatxt"
+                android:layout_width="339dp"
+                android:layout_height="215dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="14dp"
+                android:text="@string/descripcion"
+                android:textSize="18sp"
+                app:layout_constraintHorizontal_bias="0.668"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fotoPIjpj" />
 
+            <TextView
+                android:id="@+id/Comentario"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:text="Mira las opiniones de la gente de esta anécdota "
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-</LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycleComentario"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp" />
 
-</ScrollView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <EditText
+                    android:id="@+id/Comentarios"
+                    android:layout_width="251dp"
+                    android:layout_height="96dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="14dp"
+                    android:hint="Comentar..."
+                    android:textSize="18sp"
+                    app:layout_constraintHorizontal_bias="0.668"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <Button
+                    android:id="@+id/comentarbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:textSize="10dp"
+                    android:background="@color/colorAccent"
+                    android:text="comentar"
+                    android:textColor="@color/cardview_light_background"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
